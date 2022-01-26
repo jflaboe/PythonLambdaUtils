@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/plu/__init__.py
+src/plu/__main__.py
+src/plu/serve.py
+src/plu_fendall.egg-info/PKG-INFO
+src/plu_fendall.egg-info/SOURCES.txt
+src/plu_fendall.egg-info/dependency_links.txt
+src/plu_fendall.egg-info/top_level.txt

@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: plu-fendall
+Version: 1.0.0
+Summary: A package to assist in creating, testing, and deploying AWS Lambda functions
+Home-page: https://github.com/jflaboe/PythonLambdaUtils
+Author: John Laboe
+Author-email: john@laboe.org
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/jflaboe/PythonLambdaUtils/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# PythonLamdbaUtils
+
+A simple tool to aid in creating, testing, and deploying lambda functions for a project locally
+
