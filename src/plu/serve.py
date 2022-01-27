@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, make_response
 from os.path import exists
+import os
 import importlib.util
 import json
 
@@ -15,7 +16,9 @@ route_reactions = {}
 
 for r, d in config.items():
     if exists(d):
-        spec = importlib.util.spec_from_file_location("lambda_function", d + "/lambda_function.py")
+        print(os.getcwd())
+       
+        spec = importlib.util.spec_from_file_location(d + ".lambda_function", d + "/lambda_function.py")
         plugin = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(plugin)
         route_reactions[r] = plugin
@@ -71,12 +74,15 @@ def lamdba_response(path):
         'isBase64Encoded': False
     }
 
-    resp = ""
+    resp = {}
     if request.path in route_reactions:
-        print(route_reactions)
-        print(dir(route_reactions[request.path]))
         resp = route_reactions[request.path].lambda_handler(event, None)
-    return resp
+        print(resp)
+
+        response = make_response(resp['body'], resp['code'])
+        response.headers = resp['headers']
+        return response
+    return ""
 
 
 def run():
