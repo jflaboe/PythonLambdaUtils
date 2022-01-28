@@ -8,11 +8,20 @@ app = Flask(__name__)
 
 route = ""
 config = {}
+
+if exists(".plu.env"):
+    with open(".plu.env") as f:
+        env_variables =json.loads(f.read())
+
+    for r, d in env_variables.items():
+        os.environ[r] = str(d)
+    
+route_reactions = {}
 if exists(".plu"):
     with open(".plu") as f:
         config =json.loads(f.read())
 
-route_reactions = {}
+
 
 for r, d in config.items():
     if exists(d):
