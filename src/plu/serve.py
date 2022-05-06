@@ -35,9 +35,11 @@ for r, d in config.items():
 if "route" in config:
     route = config["route"]
 
-@app.route('/', defaults={'path': ''}, methods=['GET', 'POST'])
-@app.route('/<path:path>', methods=['GET', 'POST'])
+@app.route('/', defaults={'path': ''}, methods=['GET', 'POST', 'OPTIONS'])
+@app.route('/<path:path>', methods=['GET', 'POST', 'OPTIONS'])
 def lamdba_response(path):
+    print(request.path)
+    print(path)
     body = ""
     if request.method == "POST":
         body = json.dumps(request.get_json(force=True))
@@ -68,7 +70,7 @@ def lamdba_response(path):
         'requestContext': {
             'domainPrefix': 'api',
             'http': {
-                'method': 'POST',
+                'method': request.method,
                 'path': request.path,
                 'protocol': 'HTTP/1.1',
                 'sourceIp': '68.174.127.45',
@@ -91,8 +93,13 @@ def lamdba_response(path):
         response = make_response(resp['body'], resp['code'])
         response.headers = resp['headers']
         return response
+    elif "/" in route_reactions:
+        resp = route_reactions["/"].lambda_handler(event, None)
+        response = make_response(resp['body'], resp['code'])
+        response.headers = resp['headers']
+        return response
     return ""
 
 
 def run():
-    app.run(host="localhost", port=3030, debug=True)
+    app.run(host="localhost", port=3333, debug=True)
