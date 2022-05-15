@@ -93,7 +93,7 @@ def upload_lambda(package_name):
             client.create_function(
                 FunctionName=pname + "_" + package_name,
                 Runtime="python3.9",
-                Handler="lambda_handler",
+                Handler="lambda_function.lambda_handler",
                 Role=arn,
                 Code={
                     "ZipFile": z.read()

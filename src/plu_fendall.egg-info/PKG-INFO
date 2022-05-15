@@ -5,9 +5,7 @@ Summary: A package to assist in creating, testing, and deploying AWS Lambda func
 Home-page: https://github.com/jflaboe/PythonLambdaUtils
 Author: John Laboe
 Author-email: john@laboe.org
-License: UNKNOWN
 Project-URL: Bug Tracker, https://github.com/jflaboe/PythonLambdaUtils/issues
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
@@ -18,4 +16,3 @@ License-File: LICENSE
 # PythonLamdbaUtils
 
 A simple tool to aid in creating, testing, and deploying lambda functions for a project locally
-

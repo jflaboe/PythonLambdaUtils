@@ -24,7 +24,7 @@ if exists(".plu"):
 
 
 for r, d in config.items():
-    if exists(d):
+    if not "~" in r and exists(d):
         print(os.getcwd())
        
         spec = importlib.util.spec_from_file_location(d + ".lambda_function", d + "/lambda_function.py")
