@@ -90,12 +90,12 @@ def lamdba_response(path):
         resp = route_reactions[request.path].lambda_handler(event, None)
         print(resp)
 
-        response = make_response(resp['body'], resp['code'])
+        response = make_response(resp['body'], resp['statusCode'])
         response.headers = resp['headers']
         return response
     elif "/" in route_reactions:
         resp = route_reactions["/"].lambda_handler(event, None)
-        response = make_response(resp['body'], resp['code'])
+        response = make_response(resp['body'], resp['statusCode'])
         response.headers = resp['headers']
         return response
     return ""
